@@ -4,17 +4,19 @@ import { Link } from "react-router-dom";
 const SearchBarWithTray = () => {
     const [isTrayOpen, setIsTrayOpen] = useState(false);
 
-    // Function to open the tray
-    const openTray = () => {
-        console.log("Open Tray");
-        setIsTrayOpen(true);
-    };
+    const suggestedProducts = [
+        "Air Max Supreme",
+        "Sneaker Pro Ultra",
+        "Urban Jogger 3000",
+        "Trail Blazer Sneakers",
+        "CloudFit Sneakers",
+        "SpeedRunner X1",
+        "StreetSport Kicks",
+        "HighTop Classic",
+    ];
 
-    // Function to close the tray
-    const closeTray = () => {
-        console.log("Close Tray");
-        setIsTrayOpen(false);
-    };
+    const openTray = () => setIsTrayOpen(true);
+    const closeTray = () => setIsTrayOpen(false);
 
     const renderHeader = () => {
         if (!isTrayOpen) {
@@ -52,7 +54,7 @@ const SearchBarWithTray = () => {
             );
         } else {
             return (
-                <div className="flex flex-col h-screen">
+                <div className="flex flex-col h-1/4">
                     {/* Search Section */}
                     <div className="py-3 px-3 relative flex items-center justify-between w-full transition-all duration-500 ease-in-out flex-row pl-[50px] pr-[50px]">
                         {/* Logo Section */}
@@ -102,26 +104,27 @@ const SearchBarWithTray = () => {
                     </div>
 
                     {/* Suggestion Section */}
-                    <div className="flex flex-col justify-start  py-4 h-1/4 pl-36">
+                    <div className="flex flex-col justify-start py-4 pl-[200px] pr-[200px]">
                         {/* Suggestion Header */}
-                        <div className="text-sm font-semibold text-black ">
+                        <div className="text-sm font-semibold text-black">
                             Suggested Products
                         </div>
 
                         {/* Suggested Products */}
-                        <div className="flex flex-wrap justify-start gap-4 mt-4">
-                            <div className="text-sm px-4 py-2 bg-gray-100 text-black font-medium border border-gray-300 rounded-full shadow-md cursor-pointer hover:bg-gray-500">
-                                Product 1
-                            </div>
-                            <div className="text-sm px-4 py-2 bg-gray-100 text-black font-medium border border-gray-300 rounded-full shadow-md cursor-pointer hover:bg-gray-500">
-                                Product 2
-                            </div>
-                            <div className="text-sm px-4 py-2 bg-gray-100 text-black font-medium border border-gray-300 rounded-full shadow-md cursor-pointer hover:bg-gray-500">
-                                Product 3
-                            </div>
-                            <div className="text-sm px-4 py-2 bg-gray-100 text-black font-medium border border-gray-300 rounded-full shadow-md cursor-pointer hover:bg-gray-500">
-                                Product 4
-                            </div>
+                        <div className="flex flex-wrap gap-4 mt-4">
+                            {suggestedProducts.map((product, index) => (
+                                <div
+                                    key={index}
+                                    className="text-sm px-4 py-2 bg-gray-100 text-black font-medium border border-gray-300 rounded-full shadow-md cursor-pointer hover:bg-gray-500"
+                                    style={{
+                                        fontFamily:
+                                            "'Helvetica Now Text Medium', Helvetica, Arial, sans-serif",
+                                        lineHeight: "1.5",
+                                    }}
+                                >
+                                    {product}
+                                </div>
+                            ))}
                         </div>
                     </div>
                 </div>
@@ -135,7 +138,6 @@ const SearchBarWithTray = () => {
             <header className="fixed top-0 left-0 w-full bg-white z-50 shadow-md">
                 {renderHeader()}
             </header>
-
             {/* Main Content */}
             <main className="mt-20">
                 <div className="mx-auto max-w-md mt-10 bg-white border border-gray-200 rounded-lg shadow p-5 text-center">

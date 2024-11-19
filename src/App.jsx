@@ -3,7 +3,7 @@
 // import About from "./components/LandingPage";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { useState } from "react";
 import SearchBarWithTray from "./components/SearchBarWithTray";
 
@@ -14,13 +14,18 @@ function App() {
         <>
             <BrowserRouter>
                 {/* <div className="w-full min-h-screen bg-white-950">
-                    <Header isLoggedIn={isLoggedIn} />
                 </div>
 
                 <div>
                     <Footer></Footer>
                 </div> */}
-                <SearchBarWithTray />
+                <Routes>
+                    <Route
+                        path="/"
+                        element={<Header isLoggedIn={isLoggedIn} />}
+                    />
+                    <Route path="/search" element={<SearchBarWithTray />} />
+                </Routes>
             </BrowserRouter>
         </>
     );
