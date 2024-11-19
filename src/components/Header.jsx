@@ -161,14 +161,7 @@ const Header = ({ isLoggedIn }) => {
                 </>
             );
         } else {
-            return (
-                <SearchTray
-                    openTray={openTray}
-                    closeTray={closeTray}
-                    isTrayOpen={isTrayOpen}
-                    setIsTrayOpen={setIsTrayOpen}
-                />
-            );
+            return <SearchTray openTray={openTray} closeTray={closeTray} />;
         }
     };
 

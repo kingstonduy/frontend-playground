@@ -24,7 +24,10 @@ function App() {
                         path="/"
                         element={<Header isLoggedIn={isLoggedIn} />}
                     />
-                    <Route path="/search" element={<SearchBarWithTray />} />
+                    <Route
+                        path="/search"
+                        element={<SearchBarWithTray></SearchBarWithTray>}
+                    />
                 </Routes>
             </BrowserRouter>
         </>

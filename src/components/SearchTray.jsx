@@ -1,15 +1,17 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-const SearchTray = ({ openTray, closeTray, isTrayOpen, setIsTrayOpen }) => {
+const SearchTray = ({ openTray, closeTray, isTrayOpen }) => {
     const suggestedProducts = [
-        "Air Max Supreme",
+        "Air Max Supreme Nio Nio key warp",
         "Sneaker Pro Ultra",
         "Urban Jogger 3000",
         "Trail Blazer Sneakers",
         "CloudFit Sneakers",
         "SpeedRunner X1",
         "StreetSport Kicks",
+        "HighTop Classic",
+        "HighTop Classic",
         "HighTop Classic",
     ];
 
@@ -25,23 +27,28 @@ const SearchTray = ({ openTray, closeTray, isTrayOpen, setIsTrayOpen }) => {
                 </Link>
 
                 {/* Search Section */}
-                <div className="flex items-center bg-white border border-gray-300 rounded-full px-4 py-2 shadow transition-all duration-500 ease-in-out w-2/5 space-x-4">
+                <div className="flex items-center bg-white border border-2 border-black rounded-full px-4 py-2 shadow w-2/5 space-x-4">
                     <input
                         type="text"
-                        className="flex-1 border-none outline-none text-lg bg-transparent transition-all duration-500 ease-in-out w-full"
-                        placeholder="Search"
+                        className={`flex-1 border-none outline-none text-lg bg-transparent placeholder:text-black placeholder:text-jost ${
+                            isTrayOpen
+                                ? "animate-slide-in"
+                                : "animate-slide-out"
+                        }`}
+                        placeholder="Search ..."
                     />
                     <button
                         className="bg-none border-none outline-none p-1"
                         onClick={openTray}
                     >
+                        {/* Magnifying Glass Icon */}
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             fill="none"
                             viewBox="0 0 24 24"
                             strokeWidth="2"
                             stroke="currentColor"
-                            className="w-5 h-5 text-gray-500"
+                            className="w-10 h-8 text-black"
                         >
                             <path
                                 strokeLinecap="round"
@@ -55,7 +62,7 @@ const SearchTray = ({ openTray, closeTray, isTrayOpen, setIsTrayOpen }) => {
                 {/* Cancel Button */}
                 <div className="px-4">
                     <button
-                        className="text-gray-500 text-sm font-medium py-2 px-4 border border-gray-300 rounded hover:bg-gray-100"
+                        className="text-black text-lg font-medium py-2 px-4  rounded hover:underline hover:text-gray-500 font-inter"
                         onClick={closeTray}
                     >
                         Cancel
@@ -66,25 +73,42 @@ const SearchTray = ({ openTray, closeTray, isTrayOpen, setIsTrayOpen }) => {
             {/* Suggestion Section */}
             <div className="flex flex-col justify-start py-4 pl-[200px] pr-[200px]">
                 {/* Suggestion Header */}
-                <div className="text-sm font-semibold text-black">
+                <div className="relative left-[25%] text-xl font-semibold text-black font-inter">
                     Suggested Products
                 </div>
 
                 {/* Suggested Products */}
-                <div className="flex flex-wrap gap-4 mt-4">
-                    {suggestedProducts.map((product, index) => (
-                        <div
-                            key={index}
-                            className="text-sm px-4 py-2 bg-gray-100 text-black font-medium border border-gray-300 rounded-full shadow-md cursor-pointer hover:bg-gray-500"
-                            style={{
-                                fontFamily:
-                                    "'Helvetica Now Text Medium', Helvetica, Arial, sans-serif",
-                                lineHeight: "1.5",
-                            }}
-                        >
-                            {product}
-                        </div>
-                    ))}
+                <div className="relative left-[25%] mt-4 pr-[200px] pb-[30x]">
+                    {[0, 1].map((rowIndex) => {
+                        const rowProducts = suggestedProducts.slice(
+                            rowIndex * 4,
+                            rowIndex * 4 + 4
+                        );
+                        return (
+                            <div
+                                key={rowIndex}
+                                className="flex flex-wrap gap-4 py-1"
+                            >
+                                {rowProducts.map((product, index) => (
+                                    <div
+                                        key={index}
+                                        className="text-sm px-4 py-2 bg-gray-100 text-black font-medium border border-gray-300 rounded-full shadow-md cursor-pointer hover:bg-gray-500 font-inter"
+                                        style={{
+                                            lineHeight: "1.5",
+                                            maxWidth: "100%", // Adapts to content
+                                            whiteSpace: "nowrap",
+                                            overflow: "hidden",
+                                            textOverflow: "ellipsis",
+                                        }}
+                                    >
+                                        {product.length > 50
+                                            ? `${product.slice(0, 50)}...`
+                                            : product}
+                                    </div>
+                                ))}
+                            </div>
+                        );
+                    })}
                 </div>
             </div>
         </div>
