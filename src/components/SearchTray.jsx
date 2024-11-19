@@ -2,6 +2,11 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 const SearchTray = ({ openTray, closeTray, isTrayOpen }) => {
+    const [inputValue, setInputValue] = useState("");
+    const handleInputChange = (event) => {
+        setInputValue(event.target.value);
+    };
+
     const suggestedProducts = [
         "Air Max Supreme Nio Nio key warp",
         "Sneaker Pro Ultra",
@@ -27,15 +32,17 @@ const SearchTray = ({ openTray, closeTray, isTrayOpen }) => {
                 </Link>
 
                 {/* Search Section */}
-                <div className="flex items-center bg-white border border-2 border-black rounded-full px-4 py-2 shadow w-2/5 space-x-4">
+                <div className="flex items-center bg-white  border-2 border-black rounded-full px-4 py-0.5 shadow w-2/5 space-x-4">
                     <input
                         type="text"
+                        value={inputValue}
+                        onChange={handleInputChange}
                         className={`flex-1 border-none outline-none text-lg bg-transparent placeholder:text-black placeholder:text-jost ${
-                            isTrayOpen
-                                ? "animate-slide-in"
-                                : "animate-slide-out"
+                            inputValue
+                                ? "placeholder-opacity-0"
+                                : "placeholder-opacity-100"
                         }`}
-                        placeholder="Search ..."
+                        placeholder="Search"
                     />
                     <button
                         className="bg-none border-none outline-none p-1"

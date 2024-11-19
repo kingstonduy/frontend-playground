@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import SearchTray from "./SearchTray";
+import DropDownMenu from "./react-bootstrap/DropDownMenu";
 
 const Header = ({ isLoggedIn }) => {
     const [isTrayOpen, setIsTrayOpen] = useState(false);
@@ -95,51 +96,11 @@ const Header = ({ isLoggedIn }) => {
                             </div>
 
                             {/* Avatar/User Icon */}
-                            <div className="relative group">
-                                {/* User Icon */}
-                                <div className="flex items-center justify-center w-10 h-10 rounded-full cursor-pointer hover:bg-gray-500 transition duration-300">
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        fill="none"
-                                        viewBox="0 0 24 24"
-                                        strokeWidth={1.5}
-                                        stroke="currentColor"
-                                        className="w-10 h-10"
-                                    >
-                                        <path
-                                            strokeLinecap="round"
-                                            strokeLinejoin="round"
-                                            d="M17.982 18.725A7.488 7.488 0 0 0 12 15.75a7.488 7.488 0 0 0-5.982 2.975m11.963 0a9 9 0 1 0-11.963 0m11.963 0A8.966 8.966 0 0 1 12 21a8.966 8.966 0 0 1-5.982-2.275M15 9.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z"
-                                        />
-                                    </svg>
-                                </div>
-
-                                {/* Dropdown Menu */}
-                                <div className="absolute left-0 mt-2 w-48 bg-white border border-gray-300 rounded-lg shadow-lg z-50 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-opacity duration-300">
-                                    <a
-                                        href="#"
-                                        className="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                                    >
-                                        My Account
-                                    </a>
-                                    <a
-                                        href="#"
-                                        className="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                                    >
-                                        Purchase
-                                    </a>
-                                    <a
-                                        href="#"
-                                        className="block px-4 py-2 text-gray-700 hover:bg-gray-100 hover:text-gray-900"
-                                    >
-                                        Log Out
-                                    </a>
-                                </div>
-                            </div>
+                            <DropDownMenu />
 
                             {/* Cart Icon */}
                             <div className="">
-                                <div class="flex items-center justify-center w-10 h-10 rounded-full cursor-pointer hover:bg-gray-500 transition duration-300">
+                                <div class="flex items-center justify-center w-12 h-12 rounded-full cursor-pointer hover:bg-gray-500 transition duration-300">
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         fill="none"
