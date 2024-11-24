@@ -23,7 +23,7 @@ const Header = ({ isLoggedIn }) => {
         },
         {
             name: "All product",
-            link: "/",
+            link: "/products",
         },
         {
             name: "About us",
