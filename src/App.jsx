@@ -8,6 +8,7 @@ import { useState } from "react";
 import SearchBarWithTray from "./components/SearchBarWithTray";
 import DropDownMenu from "./components/react-bootstrap/DropDownMenu";
 import ProductGrid from "./components/ProductGrid";
+import About from "./components/LandingPage";
 
 function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(true);
@@ -27,6 +28,7 @@ function App() {
                         path="/search"
                         element={<SearchBarWithTray></SearchBarWithTray>}
                     />
+                    <Route path="/About" element={<About />} />
                     <Route path="/menu" element={<DropDownMenu />} />
                     <Route path="/products" element={<ProductGrid />} />
                 </Routes>
