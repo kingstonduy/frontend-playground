@@ -4,8 +4,8 @@ import SearchTray from "./SearchTray";
 import DropDownMenu from "./react-bootstrap/DropDownMenu";
 
 const Header = ({ isLoggedIn }) => {
-    const [isTrayOpen, setIsTrayOpen] = useState(false);
-    const [isCartOpen, setIsCartOpen] = useState(false);
+    const [isTrayOpen, setIsTrayOpen] = useState(false); // State to track if the search tray is open
+    const [isCartOpen, setIsCartOpen] = useState(false); // State to track if the cart panel is open
 
     // Define cart items with mock data
     const [cartItems, setCartItems] = useState([
@@ -25,12 +25,16 @@ const Header = ({ isLoggedIn }) => {
         },
     ]);
 
+    // Opens the search tray
     const openTray = () => setIsTrayOpen(true);
+
+    // Closes the search tray
     const closeTray = () => setIsTrayOpen(false);
 
+    // Toggles the cart panel visibility
     const toggleCart = () => setIsCartOpen(!isCartOpen);
 
-    // Handle quantity change
+    // Handles increment or decrement of the product quantity
     const adjustQuantity = (id, type) => {
         setCartItems((prevItems) =>
             prevItems.map((item) =>
@@ -47,11 +51,12 @@ const Header = ({ isLoggedIn }) => {
         );
     };
 
-    // Handle item removal
+    // Removes a product from the cart
     const removeFromCart = (id) => {
         setCartItems((prevItems) => prevItems.filter((item) => item.id !== id));
     };
 
+    // Navigation items for the header navbar
     const Navbar = [
         { name: "Home", link: "/" },
         { name: "Men", link: "/" },
@@ -60,10 +65,12 @@ const Header = ({ isLoggedIn }) => {
         { name: "About us", link: "/" },
     ];
 
+    // Renders the header component, including navigation, cart, and search tray
     const renderHeader = () => {
         if (!isTrayOpen) {
             return (
                 <>
+                    {/* Header Section */}
                     <div className="w-full h-auto shadow-md flex items-center justify-between">
                         {/* Logo Section */}
                         <div className="nav-symbol pl-10">
@@ -72,7 +79,7 @@ const Header = ({ isLoggedIn }) => {
                             </Link>
                         </div>
 
-                        {/* Navigation Items */}
+                        {/* Navigation Section */}
                         <div className="nav-items pl-[20px] pr-[50px]">
                             <ul className="list-none flex gap-x-12 items-center">
                                 {Navbar.map((item, index) => (
@@ -88,9 +95,9 @@ const Header = ({ isLoggedIn }) => {
                             </ul>
                         </div>
 
-                        {/* Icon Section */}
+                        {/* Icons Section (Search, Avatar, Cart) */}
                         <div className="nav-icon right-0 flex flex-row items-center justify-between gap-x-6 pl-[5px] pr-[15px]">
-                            {/* Magnifying Glass Icon */}
+                            {/* Search Icon */}
                             <div className="py-3 relative ml-auto transition-all duration-500 ease-in-out">
                                 <button
                                     className="flex items-center w-[80px] bg-white border h-[40px] border-gray-300 rounded-full px-2 py-2 shadow transition-all duration-500 ease-in-out cursor-pointer hover:bg-gray-500"
@@ -119,7 +126,7 @@ const Header = ({ isLoggedIn }) => {
                                 </button>
                             </div>
 
-                            {/* Avatar/User Icon */}
+                            {/* Avatar Icon (Dropdown) */}
                             <DropDownMenu />
 
                             {/* Cart Icon */}
@@ -157,97 +164,161 @@ const Header = ({ isLoggedIn }) => {
                         <div className="p-4">
                             {/* Cart Header */}
                             <div>
-                                <h2 className="text-lg font-semibold">
-                                    Your Cart
-                                </h2>
+                                <h1 className="text-black font-medium text-2xl">
+                                    Bag
+                                </h1>
                                 <button
                                     onClick={toggleCart}
-                                    className="absolute top-4 right-4 text-gray-600"
+                                    className="absolute top-4 right-4 text-black text-lg font-medium py-2 px-4  rounded hover:underline hover:text-gray-500 font-inter"
                                 >
                                     Close
                                 </button>
                             </div>
 
-                            {/* Cart Items */}
+                            {/* Cart Items Section */}
                             <div className="pt-20">
                                 {cartItems.length > 0 ? (
                                     cartItems.map((item) => (
                                         <div
                                             key={item.id}
-                                            className="flex items-center mb-4 border-b pb-4 h-[150px]"
-                                            style={{
-                                                display: "grid",
-                                                gridTemplateColumns:
-                                                    "2fr 2fr 1fr 1fr",
-                                                gap: "1rem",
-                                            }}
+                                            className="grid grid-rows-2 grid-cols-3 gap-4 items-center mb-4 border-b pb-4"
                                         >
-                                            {/* Image Column */}
-                                            <div className="flex justify-center">
+                                            {/* Product Image */}
+                                            <div className="row-span-2 col-span-1 flex justify-center items-center">
                                                 <img
                                                     src={item.image}
                                                     alt={item.name}
-                                                    className="w-28 h-28 object-cover"
+                                                    className="w-30 h-30 object-cover rounded-md"
                                                 />
                                             </div>
 
-                                            {/* Name Column */}
-                                            <div className="text-md font-semibold">
-                                                {item.name}
+                                            {/* Product Name */}
+                                            <div className="col-span-1 row-start-1 row-end-2">
+                                                <h3 className="text-lg font-semibold">
+                                                    {item.name}
+                                                </h3>
                                             </div>
 
-                                            {/* Quantity Column */}
-                                            <div className="flex items-center justify-start gap-x-2">
-                                                <button
-                                                    onClick={() =>
-                                                        adjustQuantity(
-                                                            item.id,
-                                                            "decrease"
-                                                        )
-                                                    }
-                                                    className="text-xl font-bold px-2 py-1 border rounded bg-gray-200 hover:bg-gray-300"
-                                                >
-                                                    -
-                                                </button>
-                                                <span className="text-md">
-                                                    {item.quantity}
-                                                </span>
-                                                <button
-                                                    onClick={() =>
-                                                        adjustQuantity(
-                                                            item.id,
-                                                            "increase"
-                                                        )
-                                                    }
-                                                    className="text-xl font-bold px-2 py-1 border rounded bg-gray-200 hover:bg-gray-300"
-                                                >
-                                                    +
-                                                </button>
+                                            {/* Product Description */}
+                                            <div className="col-span-1 row-start-2 row-end-3 text-sm text-gray-500">
+                                                <p>Category: Shoes</p>
+                                                <p>Size: 42</p>
                                             </div>
 
-                                            {/* Delete Button Column */}
-                                            <div className="flex justify-end pr-10">
-                                                <button
-                                                    onClick={() =>
-                                                        removeFromCart(item.id)
-                                                    }
-                                                    className="text-red-600 hover:text-red-800"
-                                                >
-                                                    Remove
-                                                </button>
+                                            {/* Product Total Price */}
+                                            <div className="col-span-1 row-start-1 row-end-2 text-right text-lg font-semibold pr-4">
+                                                ${item.price * item.quantity}
+                                            </div>
+                                            {/* Quantity Control */}
+                                            <div className="col-span-1 row-start-2 row-end-3 flex justify-end items-center">
+                                                <div className="flex items-center">
+                                                    {/* Decrease Button or Trash Bin */}
+                                                    <div className="w-10 h-10 flex justify-center items-center rounded-l-full border-t border-b border-l hover:bg-gray-300 transition duration-300 cursor-pointer">
+                                                        {item.quantity > 1 ? (
+                                                            <button
+                                                                onClick={() =>
+                                                                    adjustQuantity(
+                                                                        item.id,
+                                                                        "decrease"
+                                                                    )
+                                                                }
+                                                                className="focus:outline-none"
+                                                            >
+                                                                {/* Minus Icon */}
+                                                                <svg
+                                                                    viewBox="0 0 24 24"
+                                                                    width="20px"
+                                                                    height="20px"
+                                                                    fill="none"
+                                                                >
+                                                                    <path
+                                                                        stroke="currentColor"
+                                                                        strokeWidth="1.5"
+                                                                        d="M18 12H6"
+                                                                    ></path>
+                                                                </svg>
+                                                            </button>
+                                                        ) : (
+                                                            <button
+                                                                onClick={() =>
+                                                                    removeFromCart(
+                                                                        item.id
+                                                                    )
+                                                                }
+                                                                className="focus:outline-none"
+                                                            >
+                                                                {/* Trash Bin Icon */}
+                                                                <svg
+                                                                    viewBox="0 0 24 24"
+                                                                    width="20px"
+                                                                    height="20px"
+                                                                    fill="none"
+                                                                >
+                                                                    <path
+                                                                        stroke="currentColor"
+                                                                        strokeWidth="1.5"
+                                                                        d="M13.75 10v7m-3.5-7v7m-3.5-8.5V17c0 1.24 1.01 2.25 2.25 2.25h6c1.24 0 2.25-1.01 2.25-2.25V7.75h2.25m-10-3h3.75c.83 0 1.5.67 1.5 1.5s-.67 1.5-1.5 1.5H4.5"
+                                                                    ></path>
+                                                                </svg>
+                                                            </button>
+                                                        )}
+                                                    </div>
+
+                                                    {/* Quantity Display */}
+                                                    <div className="flex justify-center items-center w-12 h-10 border-t border-b text-lg font-medium">
+                                                        {item.quantity}
+                                                    </div>
+
+                                                    {/* Increase Button */}
+                                                    <div className="w-10 h-10 flex justify-center items-center rounded-r-full border-t border-b border-r hover:bg-gray-300 transition duration-300 cursor-pointer">
+                                                        <button
+                                                            onClick={() =>
+                                                                adjustQuantity(
+                                                                    item.id,
+                                                                    "increase"
+                                                                )
+                                                            }
+                                                            className="focus:outline-none"
+                                                        >
+                                                            {/* Plus Icon */}
+                                                            <svg
+                                                                viewBox="0 0 24 24"
+                                                                width="20px"
+                                                                height="20px"
+                                                                fill="none"
+                                                            >
+                                                                <path
+                                                                    stroke="currentColor"
+                                                                    strokeWidth="1.5"
+                                                                    d="M12 6v12m6-6H6"
+                                                                ></path>
+                                                            </svg>
+                                                        </button>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     ))
                                 ) : (
-                                    // <p>Your cart is empty.</p>
-                                    <></>
+                                    <p>Your cart is empty.</p>
                                 )}
+                            </div>
+
+                            {/* Checkout Button */}
+                            <div className="flex justify-center mt-6">
+                                <button
+                                    className="bg-black text-white py-2 px-6 rounded-full hover:bg-gray-800 transition duration-300"
+                                    onClick={() => alert("Proceed to checkout")}
+                                >
+                                    Go to Checkout
+                                </button>
                             </div>
                         </div>
                     </div>
                 </>
             );
         } else {
+            // If search tray is open, render the SearchTray component
             return <SearchTray openTray={openTray} closeTray={closeTray} />;
         }
     };
