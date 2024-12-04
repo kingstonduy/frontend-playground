@@ -209,6 +209,7 @@ const Header = ({ isLoggedIn }) => {
                                             <div className="col-span-1 row-start-1 row-end-2 text-right text-lg font-semibold pr-4">
                                                 ${item.price * item.quantity}
                                             </div>
+
                                             {/* Quantity Control */}
                                             <div className="col-span-1 row-start-2 row-end-3 flex justify-end items-center">
                                                 <div className="flex items-center">

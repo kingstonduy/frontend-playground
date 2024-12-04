@@ -9,6 +9,7 @@ import SearchBarWithTray from "./components/SearchBarWithTray";
 import DropDownMenu from "./components/react-bootstrap/DropDownMenu";
 import ProductGrid from "./components/ProductGrid";
 import About from "./components/LandingPage";
+import CheckoutPage from "./components/Checkout";
 
 function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(true);
@@ -31,6 +32,7 @@ function App() {
                     <Route path="/About" element={<About />} />
                     <Route path="/menu" element={<DropDownMenu />} />
                     <Route path="/products" element={<ProductGrid />} />
+                    <Route path="/checkout" element={<CheckoutPage />} />
                 </Routes>
             </BrowserRouter>
         </>
