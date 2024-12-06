@@ -17,7 +17,7 @@ function App() {
 
     return (
         <>
-            <BrowserRouter basename={import.meta.env.BASE_URL}>
+            <BrowserRouter basename="/front-end-playground/">
                 {/* <div className="w-full min-h-screen bg-white-950">
                 </div>
 
