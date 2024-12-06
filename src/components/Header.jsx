@@ -58,7 +58,7 @@ const Header = ({ isLoggedIn }) => {
 
     // Navigation items for the header navbar
     const Navbar = [
-        { name: "Home", link: "/" },
+        { name: "Home", link: "/home" },
         { name: "Men", link: "/" },
         { name: "Women", link: "/" },
         { name: "All product", link: "/products" },
@@ -74,7 +74,10 @@ const Header = ({ isLoggedIn }) => {
                     <div className="w-full h-auto shadow-md flex items-center justify-between">
                         {/* Logo Section */}
                         <div className="nav-symbol pl-10">
-                            <Link className="text-3xl text-black font-jost font-semibold tracking-[0.1rem]">
+                            <Link
+                                className="text-3xl text-black font-jost font-semibold tracking-[0.1rem]"
+                                to={"/home"}
+                            >
                                 Sneaker
                             </Link>
                         </div>

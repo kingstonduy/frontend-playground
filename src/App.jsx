@@ -10,6 +10,7 @@ import DropDownMenu from "./components/react-bootstrap/DropDownMenu";
 import ProductGrid from "./components/ProductGrid";
 import About from "./components/LandingPage";
 import CheckoutPage from "./components/Checkout";
+import LandingPage from "./components/nike-landingpage/LandingPage";
 
 function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(true);
@@ -29,10 +30,13 @@ function App() {
                         path="/search"
                         element={<SearchBarWithTray></SearchBarWithTray>}
                     />
+                    <Route path="/" element={<LandingPage />} />
+                    <Route path="/home" element={<LandingPage />} />
                     <Route path="/About" element={<About />} />
                     <Route path="/menu" element={<DropDownMenu />} />
                     <Route path="/products" element={<ProductGrid />} />
                     <Route path="/checkout" element={<CheckoutPage />} />
+                    <Route path="landingpage" element={<LandingPage />} />
                 </Routes>
             </BrowserRouter>
         </>
