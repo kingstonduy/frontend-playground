@@ -17,7 +17,7 @@ function App() {
 
     return (
         <>
-            <BrowserRouter basename="/front-end-playground/">
+            <BrowserRouter basename="/frontend-playground/">
                 {/* <div className="w-full min-h-screen bg-white-950">
                 </div>
 
