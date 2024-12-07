@@ -1,10 +1,3 @@
-import bigShoe1 from "./big-shoe1.svg";
-import bigShoe2 from "./big-shoe2.svg";
-import bigShoe3 from "./big-shoe3.svg";
-
-import customer1 from "./customer1.svg";
-import customer2 from "./customer2.svg";
-
 import footerLogo from "./footer-logo.svg";
 import headerLogo from "./header-logo.svg";
 
@@ -20,6 +13,18 @@ import thumbnailBackground from "./thumbnail-background.svg";
 import thumbnailShoe1 from "./thumbnail-shoe1.svg";
 import thumbnailShoe2 from "./thumbnail-shoe2.svg";
 import thumbnailShoe3 from "./thumbnail-shoe3.svg";
+
+const bigShoe1 =
+    "https://github.com/kingstonduy/asset/blob/main/frontend-playground/image/big-shoe1.png?raw=true";
+const bigShoe2 =
+    "https://github.com/kingstonduy/asset/blob/main/frontend-playground/image/big-shoe2.png?raw=true";
+const bigShoe3 =
+    "https://github.com/kingstonduy/asset/blob/main/frontend-playground/image/big-shoe3.png?raw=true";
+
+const customer1 =
+    "https://github.com/kingstonduy/asset/blob/main/frontend-playground/image/customer.jpg?raw=true";
+const customer2 =
+    "https://github.com/kingstonduy/asset/blob/main/frontend-playground/image/customer.jpg?raw=true";
 
 export {
     bigShoe1,
