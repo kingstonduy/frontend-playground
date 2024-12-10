@@ -13,10 +13,10 @@ import {
 const LandingPage = () => {
     return (
         <div className="relative px-36">
-            <section className="xl:padding-l wide:padding-r padding-b ">
+            <section className="xl:padding-l wide:padding-r padding-b  ">
                 <Hero />
             </section>
-            <section className="padding">
+            <section className="padding ">
                 <PopularProducts />
             </section>
             <section className="padding">
@@ -25,10 +25,10 @@ const LandingPage = () => {
             <section className="padding-x py-10">
                 <Services />
             </section>
-            <section className="padding">
+            <section className="padding pb-10">
                 <SpecialOffer />
             </section>
-            <section className="bg-pale-blue padding">
+            <section className="bg-pale-blue padding rounded-3xl">
                 <CustomerReviews />
             </section>
             <section className="padding-x sm:py-32 py-16 w-full">

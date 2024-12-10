@@ -11,6 +11,7 @@ import ProductGrid from "./components/ProductGrid";
 import About from "./components/LandingPage";
 import CheckoutPage from "./components/Checkout";
 import LandingPage from "./components/nike-landingpage/LandingPage";
+import ProductDetailPage from "./components/ProductDetail";
 
 function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(true);
@@ -37,6 +38,10 @@ function App() {
                     <Route path="/products" element={<ProductGrid />} />
                     <Route path="/checkout" element={<CheckoutPage />} />
                     <Route path="landingpage" element={<LandingPage />} />
+                    <Route
+                        path="/product/:productId"
+                        element={<ProductDetailPage />}
+                    />
                 </Routes>
             </BrowserRouter>
         </>

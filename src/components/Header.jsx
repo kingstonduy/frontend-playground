@@ -2,8 +2,10 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import SearchTray from "./SearchTray";
 import DropDownMenu from "./react-bootstrap/DropDownMenu";
+import { useNavigate } from "react-router-dom";
 
 const Header = ({ isLoggedIn }) => {
+    const navigate = useNavigate();
     const [isTrayOpen, setIsTrayOpen] = useState(false); // State to track if the search tray is open
     const [isCartOpen, setIsCartOpen] = useState(false); // State to track if the cart panel is open
 
@@ -49,6 +51,10 @@ const Header = ({ isLoggedIn }) => {
                     : item
             )
         );
+    };
+
+    const handleCheckout = (navigate) => {
+        navigate("/checkout");
     };
 
     // Removes a product from the cart
@@ -312,7 +318,7 @@ const Header = ({ isLoggedIn }) => {
                             <div className="flex justify-center mt-6">
                                 <button
                                     className="bg-black text-white py-2 px-6 rounded-full hover:bg-gray-800 transition duration-300"
-                                    onClick={() => alert("Proceed to checkout")}
+                                    onClick={() => handleCheckout(navigate)}
                                 >
                                     Go to Checkout
                                 </button>

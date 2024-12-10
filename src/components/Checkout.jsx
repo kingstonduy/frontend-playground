@@ -1,8 +1,11 @@
 // src/CheckoutPage.jsx
 import React, { useState } from "react";
 import { IoLocationSharp } from "react-icons/io5";
+import { useNavigate } from "react-router-dom";
 
 const CheckoutPage = () => {
+    const navigate = useNavigate();
+
     const [cartItems, setCartItems] = useState([
         {
             id: 1,
@@ -27,7 +30,8 @@ const CheckoutPage = () => {
     const [paymentMethod, setPaymentMethod] = useState("");
 
     const handleCheckout = () => {
-        alert("Proceeding to checkout");
+        alert("check out successfully");
+        navigate("/home");
     };
 
     const subtotal = cartItems.reduce(
@@ -174,7 +178,7 @@ const CheckoutPage = () => {
                         <div className="mt-4">
                             <button
                                 className="bg-black text-white w-full py-2 px-6 rounded-full hover:bg-gray-800 transition duration-300"
-                                onClick={() => alert("Proceed to checkout")}
+                                onClick={() => handleCheckout()}
                             >
                                 Confirm
                             </button>

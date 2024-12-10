@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom"; // Import useNavigate
 
 const ProductGrid = () => {
     const pageSize = 28; // 4 columns x 7 rows
     const [currentPage, setCurrentPage] = useState(1);
     const [products, setProducts] = useState([]);
     const [maxPages, setMaxPages] = useState(0);
+    const navigate = useNavigate(); // Initialize the navigate function
 
     // Fetch data from the simulated API
     const fetchProducts = (page) => {
@@ -55,6 +57,11 @@ const ProductGrid = () => {
         setCurrentPage(page);
     };
 
+    // Handle product click to navigate to the detail page
+    const handleProductClick = (productId) => {
+        navigate(`/product/${productId}`);
+    };
+
     return (
         <div className="pr-32 pl-32 pt-10 pd-10">
             {/* Product Grid */}
@@ -62,6 +69,7 @@ const ProductGrid = () => {
                 {products.map((product) => (
                     <div
                         key={product.id}
+                        onClick={() => handleProductClick(product.id)} // Add click handler
                         className="border border-gray-300 rounded-lg shadow-md hover:shadow-lg transform hover:-translate-y-1 transition-transform cursor-pointer"
                     >
                         <img
