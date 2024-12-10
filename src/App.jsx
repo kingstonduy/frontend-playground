@@ -12,6 +12,7 @@ import About from "./components/LandingPage";
 import CheckoutPage from "./components/Checkout";
 import LandingPage from "./components/nike-landingpage/LandingPage";
 import ProductDetailPage from "./components/ProductDetail";
+import CommentTest from "./components/comment_test";
 
 function App() {
     const [isLoggedIn, setIsLoggedIn] = useState(true);
@@ -42,6 +43,7 @@ function App() {
                         path="/product/:productId"
                         element={<ProductDetailPage />}
                     />
+                    <Route path="/comment_test" element={<CommentTest />} />
                 </Routes>
             </BrowserRouter>
         </>

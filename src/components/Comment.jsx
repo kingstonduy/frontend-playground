@@ -344,7 +344,7 @@ const FilterMenu = ({ filter, setFilter }) => {
                             <button
                                 key={rating}
                                 onClick={() => handleFilter(rating)}
-                                className=" flex flex-row border border-black  items-center block px-4 py-2 text-[1.25rem] w-full hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+                                className=" flex flex-row border border-black  items-center px-4 py-2 text-[1.25rem] w-full hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
                             >
                                 {rating}
                                 <div className="flex justify-center items-center text-yellow-400 text-2xl">
